@@ -1,0 +1,24 @@
+{
+  "id_run": "773db55c-df93-4623-8fc6-4eac4c0b70b9",
+  "file_name": "orders_400MB.csv",
+  "file_size_mb": 418.55,
+  "used_engine": "pyspark",
+  "read_rows": 1000000,
+  "loaded_raw": 1000000,
+  "count_valid": 0,
+  "count_corrected": 993020,
+  "count_quarantine": 6980,
+  "seconds_elapsed": 1053.21,
+  "throughput": 949.48,
+  "partitions": 300,
+  "size_batch": null,
+  "counts_case_error": {
+    "ID_ORDER_MISSING": 6980
+  },
+  "count_inserted": null,
+  "count_updated": null,
+  "count_unchanged": null,
+  "settings": {
+    "small_file_threshold_mb": 200
+  }
+}

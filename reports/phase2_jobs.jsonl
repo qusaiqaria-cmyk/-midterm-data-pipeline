@@ -1,0 +1,2 @@
+{"name": "refresh_materialized_views", "status": "success", "started_at": "2026-10-04T18:19:17.053565+00:00", "finished_at": "2026-10-04T18:19:17.893515+00:00", "result": {"mode": "incremental", "changed_records": 0, "event_count": 0, "city_groups": 0, "status_groups": 0, "watermark": "2026-10-04T18:19:17.081868+00:00"}}
+{"name": "periodic_aggregation_report", "status": "success", "started_at": "2026-10-04T18:19:17.898509+00:00", "finished_at": "2026-10-04T18:19:23.394264+00:00", "result": {"sales_by_city": 10, "sales_by_status": 7}}

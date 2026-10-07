@@ -1,0 +1,58 @@
+{
+  "queries": [
+    "orders_by_city",
+    "orders_by_status",
+    "city_status_orders"
+  ],
+  "before_indexes": {
+    "orders_by_city": {
+      "executionTimeMillis": 866,
+      "nReturned": 98891,
+      "totalKeysExamined": 0,
+      "totalDocsExamined": 986060,
+      "winningPlan": "PROJECTION_SIMPLE"
+    },
+    "orders_by_status": {
+      "executionTimeMillis": 1021,
+      "nReturned": 162755,
+      "totalKeysExamined": 0,
+      "totalDocsExamined": 986060,
+      "winningPlan": "PROJECTION_SIMPLE"
+    },
+    "city_status_orders": {
+      "executionTimeMillis": 733,
+      "nReturned": 16229,
+      "totalKeysExamined": 0,
+      "totalDocsExamined": 986060,
+      "winningPlan": "PROJECTION_SIMPLE"
+    }
+  },
+  "after_indexes": {
+    "orders_by_city": {
+      "executionTimeMillis": 239,
+      "nReturned": 98891,
+      "totalKeysExamined": 98891,
+      "totalDocsExamined": 98891,
+      "winningPlan": "PROJECTION_SIMPLE"
+    },
+    "orders_by_status": {
+      "executionTimeMillis": 337,
+      "nReturned": 162755,
+      "totalKeysExamined": 162755,
+      "totalDocsExamined": 162755,
+      "winningPlan": "PROJECTION_SIMPLE"
+    },
+    "city_status_orders": {
+      "executionTimeMillis": 45,
+      "nReturned": 16229,
+      "totalKeysExamined": 16229,
+      "totalDocsExamined": 16229,
+      "winningPlan": "PROJECTION_SIMPLE"
+    }
+  },
+  "indexes_used": [
+    "phase2_city",
+    "phase2_status",
+    "phase2_city_status"
+  ]
+}

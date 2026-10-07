@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "MongoDB Schemas for Midterm ELT Pipeline (Final Version)",
+  "collections": {
+    "orders_raw": {
+      "description": "Historical trace - data as received, no cleaning applied.",
+      "indexes": [
+        "run_id",
+        "source_file"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string"
+        },
+        "source_file": {
+          "type": "string"
+        },
+        "source_row_number": {
+          "type": "integer"
+        },
+        "ingested_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "engine_used": {
+          "enum": [
+            "python_batch",
+            "pyspark"
+          ]
+        },
+        "raw_record": {
+          "type": "object"
+        }
+      }
+    },
+    "orders_validated": {
+      "description": "Final business state. Unique per order_id (Idempotency).",
+      "indexes": [
+        "order_id (unique)",
+        "run_id"
+      ],
+      "properties": {
+        "order_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "quality_status": {
+          "enum": [
+            "valid",
+            "corrected"
+          ]
+        },
+        "corrections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "original_value": {
+                "type": "string"
+              },
+              "corrected_value": {
+                "type": "string"
+              },
+              "rule_code": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "record_hash": {
+          "type": "string",
+          "description": "For incremental change detection"
+        }
+      }
+    },
+    "orders_quarantine": {
+      "description": "Records that cannot be safely corrected.",
+      "indexes": [
+        "run_id",
+        "quarantine_reason"
+      ],
+      "properties": {
+        "quarantine_reason": {
+          "enum": [
+            "MISSING_ORDER_ID",
+            "MISSING_CUSTOMER_ID",
+            "INVALID_IMPOSSIBLE_DATE",
+            "CORRUPTED_ITEMS",
+            "EMPTY_ITEMS",
+            "UNKNOWN_PRICE",
+            "AMBIGUOUS_NEGATIVE_VALUE",
+            "DUPLICATE_ORDER_ID"
+          ]
+        }
+      }
+    }
+  }
+}
